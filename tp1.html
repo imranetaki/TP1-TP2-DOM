@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 1</title>
+
+</head>
+<body>
+    <h1>Exercice 1 :</h1>
+    <label for="valeur1">Valeur 1:</label>
+    <input type="number" id="valeur1"><br><br>
+    <label for="valeur2">Valeur 2:</label>
+    <input type="number" id="valeur2"><br><br>
+    <button onclick="calculerSomme()">Calculer</button><br><br>
+    <p id="resultat"></p>
+
+    <script>
+        function calculerSomme() {
+            var valeur1 = parseFloat(document.getElementById('valeur1').value);
+            var valeur2 = parseFloat(document.getElementById('valeur2').value);
+            var resultat = valeur1 + valeur2;
+            document.getElementById('resultat').innerText = "La somme est : " + resultat;
+        }
+    </script>
+
+    <h1>Exercice 2 :</h1>
+
+    <input type="text" id="fN"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <input type="text" id="sN">
+    <button onclick="permuterValeurs()">Permuter</button>
+    <script>
+        function permuterValeurs() {
+            var n1 = document.getElementById("fN").value;
+            var n2 = document.getElementById("sN").value;
+            document.getElementById("fN").value = n2;
+            document.getElementById("sN").value = n1;
+}
+
+    </script>
+
+    <h1>Exercice 3 :</h1>
+
+    <input type="text" id="nomPrenom">
+    <button onclick="separerNomPrenom()">Separer</button>
+    <p id="nom"></p>
+    <p id="prenom"></p>
+
+    <script>
+        function separerNomPrenom() {
+            var nomPrenom = document.getElementById("nomPrenom").value;
+            var i = nomPrenom.indexOf(" ");
+            var nom = nomPrenom.slice(0, i);
+            var prenom = nomPrenom.slice(i + 1);
+            document.getElementById("nom").innerText = "Nom: " + nom;
+            document.getElementById("prenom").innerText = "Prenom: " + prenom;
+}
+
+
+    </script>
+
+    
+
+<h1>Exercice 4 :</h1>
+<label for="nombre">Entrez un nombre :</label>
+<input type="number" id="nombre">
+<button onclick="calculerValeurAbsolue()">Calculer</button>
+<p id="resultat2"></p>
+
+<script>
+    function calculerValeurAbsolue() {
+        var nombre = parseFloat(document.getElementById('nombre').value);
+        var valeurAbsolue = Math.abs(nombre);
+        document.getElementById('resultat2').innerText = "La valeur absolue est : " + valeurAbsolue;
+    }
+</script>
+
+    <br>
+    <h1>Exercice 5 :</h1>
+    <label for="nombre 1">nombre 1 : </label><input type="text" id="txt1"> <br><br>
+    <label for="op">operation : </label>
+    <select name="ope" id="ope">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <br><br>
+    <label for="nombre 2">nombre 2 : </label><input type="text" id="txt2"> <br><br>
+    <input type="button" id="btn" name="btn" value="resultat" onclick="operation()">
+    <p id="resultat1"></p>
+    <script>
+         function operation(){
+            var e = Number(document.getElementById("txt1").value);
+            var f = Number(document.getElementById("txt2").value);
+            var op = document.getElementById("ope").value;
+            switch(op){
+                case "+" : R = e + f ;
+                break
+                case "-" : R = e - f ;
+                break
+                case "*" : R = e * f ;
+                break
+                case "/" : R = e / f ;
+                break
+            };
+            document.getElementById('resultat1').innerText = "Le resultat est : " + R;
+         }
+    </script>
+    
+        
+    
+    
+</body>
+</html>

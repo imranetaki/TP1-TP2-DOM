@@ -1,0 +1,255 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>TP 2</title>
+     <style>
+        
+        #colorDiv {
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 300px;
+            
+        }
+        .container {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .box {
+            width: 200px;
+            border: 1px solid black;
+            padding: 10px;
+            margin-right: 10px;
+        }
+    </style>
+ </head>
+    <body>
+    <h1>Exercice 1 :</h1>
+    <input type="radio" name="genre" id="femme" onclick="f()"/>Femme
+    <input type="radio" name="genre" id="homme" onclick="f()"/>Homme
+    <div id="genre"></div>
+ 
+    <script>
+         function f() {
+             var genreDiv = document.getElementById("genre");
+             var femmeRadio = document.getElementById("femme");
+             var hommeRadio = document.getElementById("homme");
+ 
+             
+             if (femmeRadio.checked) {
+                
+                 var selectList = document.createElement("select");
+                 selectList.id = "selectGenre";
+                 
+                 var option1 = document.createElement("option");
+                 option1.value = "mademoiselle";
+                 option1.text = "Mademoiselle";
+                 var option2 = document.createElement("option");
+                 option2.value = "madame";
+                 option2.text = "Madame";
+                 
+                 
+                 selectList.appendChild(option1);
+                 selectList.appendChild(option2);
+                 
+                 
+                 genreDiv.innerHTML = "";
+                 genreDiv.appendChild(selectList);
+             } 
+             
+             else {
+                 
+                 genreDiv.innerHTML = "";
+             }
+         }
+     </script>
+<h1>Exercice 2 :</h1>
+<main>
+    <button onclick="f1()">Jaune</button>
+    <button onclick="f2()">Rouge</button>
+    <button onclick="f3()">Vert</button>
+    <button onclick="f4()">Noir</button>
+</main>
+<div id="colorDiv">
+    Modifier la couleur de l'arrière-plan
+</div>
+
+<script>
+  
+    function f1() {
+        document.getElementById("colorDiv").style.backgroundColor = "yellow";
+    }
+
+    
+    function f2() {
+        document.getElementById("colorDiv").style.backgroundColor = "red";
+    }
+
+    
+    function f3() {
+        document.getElementById("colorDiv").style.backgroundColor = "green";
+    }
+
+  
+    function f4() {
+        document.getElementById("colorDiv").style.backgroundColor = "black";
+        document.getElementById("colorDiv").style.color = "white"; }
+    
+    </script>
+    <h1>Exercice 3 :</h1>
+
+<label for="numberInput">Saisir un nombre :</label>
+<input type="number" id="numberInput">
+<button onclick="addNumber()">Ajouter</button>
+
+<div class="container">
+    <div id="evenNumbers" class="box">Nombres Pairs :</div>
+    <div id="oddNumbers" class="box">Nombres Impairs :</div>
+</div>
+
+<script>
+    function addNumber() {
+        var numberInput = parseInt(document.getElementById("numberInput").value);
+        var evenNumbersDiv = document.getElementById("evenNumbers");
+        var oddNumbersDiv = document.getElementById("oddNumbers");
+
+        
+        if (!isNaN(numberInput)) {
+            
+            if (numberInput % 2 === 0) {
+                
+                evenNumbersDiv.innerHTML += "<p>" + numberInput + "</p>";
+            } 
+           
+            else {
+               
+                oddNumbersDiv.innerHTML += "<p>" + numberInput + "</p>";
+            }
+        } 
+       
+        else {
+            alert("Veuillez saisir un nombre valide !");
+        }
+
+        
+        document.getElementById("numberInput").value = "";
+    }
+</script>
+<h1>Exercice 4 :</h1>
+<div>
+    <p>Saisir la moyenne des contrôles (/20)</p>
+    <input type="number" min="0" max="20" id="moyC">
+</div>
+<div>
+    <p>Saisir la note de l'EFM (/40)</p>
+    <input type="number" min="0" max="40" id="noteEFM">
+</div>
+    <br>
+    <button onclick="calculerNoteModule()">Note Module</button>
+    <br>
+    <span id="resultat"></span>
+
+
+<script>
+    function calculerNoteModule() {
+        var moyenneControles = parseFloat(document.getElementById('moyC').value);
+        var noteEFM = parseFloat(document.getElementById('noteEFM').value);
+        var moyenneModule = ((moyenneControles + noteEFM) / 3).toFixed(2);
+        var appreciation = "";
+        var emoji = "";
+
+        if (moyenneModule < 7) {
+            appreciation = "Nul";
+            emoji = "😡 ";
+        } else if (moyenneModule < 10) {
+            appreciation = "Insuffisant";
+            emoji = "😨";
+        } else if (moyenneModule < 12) {
+            appreciation = "Passable";
+            emoji = "😐";
+        } else if (moyenneModule < 14) {
+            appreciation = "Assez bien";
+            emoji = "🙂";
+        } else if (moyenneModule < 16) {
+            appreciation = "Bien";
+            emoji = "😄";
+        } else {
+            appreciation = "Très bien";
+            emoji = "🎉";
+        }
+
+        document.getElementById('resultat').innerHTML = "Note du module : " + moyenneModule + "<br> Réaction : " + appreciation + "<br> Appréciation : " + emoji;
+    }
+</script>
+
+
+
+<h1>Exercice 5 </h1>
+    <div class="container">
+      <div class="list">
+        <h3>Les languages proposés</h3>
+        <ul id="proposedLanguages">
+          <li>C</li>
+          <li>Cpp</li>
+          <li>Python</li>
+          <li>JS</li>
+        </ul>
+      </div>
+    
+      <div class="list">
+        <h3>Vos preferences</h3>
+        <ul id="preferredLanguages">
+          <li>Java</li>
+        </ul>
+      </div>
+    </div>
+    
+    <input type="text" id="newLanguage" placeholder="Java">
+    <button onclick="addLanguage()">Ajouter un language aux preferences</button>
+    <button onclick="removeLanguage()">Retirer un language des preferences</button>
+    
+    <script>
+      function addLanguage() {
+        var newLanguage = document.getElementById("newLanguage").value;
+        var proposedList = document.getElementById("proposedLanguages");
+        var preferredList = document.getElementById("preferredLanguages");
+    
+       
+        for (var i = 0; i < proposedList.children.length; i++) {
+          if (proposedList.children[i].textContent === newLanguage) {
+            proposedList.removeChild(proposedList.children[i]);
+    
+            var newListItem = document.createElement("li");
+            newListItem.textContent = newLanguage;
+            preferredList.appendChild(newListItem);
+            break;
+          }
+        }
+      }
+    
+      function removeLanguage() {
+        var newLanguage = document.getElementById("newLanguage").value;
+        var proposedList = document.getElementById("proposedLanguages");
+        var preferredList = document.getElementById("preferredLanguages");
+    
+        for (var i = 0; i < preferredList.children.length; i++) {
+          if (preferredList.children[i].textContent === newLanguage) {
+            preferredList.removeChild(preferredList.children[i]);
+    
+            var newListItem = document.createElement("li");
+            newListItem.textContent = newLanguage;
+            proposedList.appendChild(newListItem);
+            break;
+          }
+        }
+      }
+    </script>
+ </body>
+ </html>
+ 
